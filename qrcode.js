@@ -1900,9 +1900,14 @@ var qrcode = function() {
       // Global Color Map
 
       // black
-      out.writeByte(0x00);
-      out.writeByte(0x00);
-      out.writeByte(0x00);
+      // out.writeByte(0x00);
+      // out.writeByte(0x00);
+      // out.writeByte(0x00);
+
+      // Keybase blue
+      out.writeByte(0x4c)
+      out.writeByte(0x8e)
+      out.writeByte(0xff)
 
       // white
       out.writeByte(0xff);
