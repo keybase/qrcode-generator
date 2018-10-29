@@ -526,7 +526,7 @@ var qrcode = function() {
       return qrSvg;
     };
 
-    _this.createDataURL = function(cellSize, margin) {
+    _this.createDataURL = function(cellSize, margin, color) {
 
       cellSize = cellSize || 2;
       margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
@@ -543,7 +543,7 @@ var qrcode = function() {
         } else {
           return 1;
         }
-      } );
+      }, color );
     };
 
     _this.createImgTag = function(cellSize, margin, alt) {
@@ -1867,7 +1867,8 @@ var qrcode = function() {
   // gifImage (B/W)
   //---------------------------------------------------------------------
 
-  var gifImage = function(width, height) {
+  var gifImage = function(width, height, color) {
+    var _color = color || [0,0,0]
 
     var _width = width;
     var _height = height;
@@ -1904,10 +1905,10 @@ var qrcode = function() {
       // out.writeByte(0x00);
       // out.writeByte(0x00);
 
-      // Keybase blue
-      out.writeByte(0x4c)
-      out.writeByte(0x8e)
-      out.writeByte(0xff)
+      // Custom color
+      out.writeByte(color[0])
+      out.writeByte(color[1])
+      out.writeByte(color[2])
 
       // white
       out.writeByte(0xff);
@@ -2082,8 +2083,8 @@ var qrcode = function() {
     return _this;
   };
 
-  var createDataURL = function(width, height, getPixel) {
-    var gif = gifImage(width, height);
+  var createDataURL = function(width, height, getPixel, color) {
+    var gif = gifImage(width, height, color);
     for (var y = 0; y < height; y += 1) {
       for (var x = 0; x < width; x += 1) {
         gif.setPixel(x, y, getPixel(x, y) );
