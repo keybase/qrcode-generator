@@ -1906,9 +1906,9 @@ var qrcode = function() {
       // out.writeByte(0x00);
 
       // Custom color
-      out.writeByte(color[0])
-      out.writeByte(color[1])
-      out.writeByte(color[2])
+      out.writeByte(_color[0])
+      out.writeByte(_color[1])
+      out.writeByte(_color[2])
 
       // white
       out.writeByte(0xff);
